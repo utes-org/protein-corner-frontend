@@ -1,1 +1,1 @@
-# protein-point-frontend
+# protein-corner-frontend
