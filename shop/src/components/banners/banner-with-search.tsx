@@ -53,7 +53,7 @@ const BannerWithSearch: React.FC<BannerProps> = ({ banners, layout }) => {
   }
   return (
     <div
-      className={cn("textClass relative mt-16", {
+      className={cn("textClass relative sm:mt-0 md:mt-0 lg:mt-16 xl:mt-16", {
         "!block": layout === "minimal",
       })}
     >
