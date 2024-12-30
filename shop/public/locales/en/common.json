@@ -16,6 +16,7 @@
   "auth-menu-my-orders": "My Orders",
   "auth-menu-logout": "Logout",
   "join-button": "Join",
+  "sign-in-button": "Sign In",
   "change-locale": "Switch to german",
   "text-search": "Search",
   "text-burger-menu": "Burger Menu",
@@ -544,7 +545,7 @@
   "text-created-at": "Created At",
   "text-notification-read-message": "Notification read successfully.",
   "text-notifications-read-message": "All notifications read successfully.",
-  
+
   "text-news": "news",
   "placeholder-your-name": "Your name...",
   "placeholder-your-email": "Your email...",
@@ -553,5 +554,4 @@
   "text-commission": "Commission",
   "text-send-message": "Send Message",
   "text-download-unavailable": "Unavailable"
-
 }
