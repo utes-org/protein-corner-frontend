@@ -41,16 +41,72 @@ export function Grid({
 }: Props) {
   const { t } = useTranslation("common");
   const { settings } = useSettings();
+
+  // TODO: get maintenance description from settings temporarily
   const maintenanceDesc: string = settings?.maintenance?.description;
-  console.log("settings", maintenanceDesc);
 
   if (error) return <ErrorMessage message={error.message} />;
 
+  function MaintenanceComp() {
+    return (
+      <div className="w-full max-w-3xl">
+        <div className="overflow-hidden bg-white border border-indigo-100 shadow-xl rounded-2xl">
+          {/* Header Section */}
+          <div className="px-6 py-8 bg-red-500 sm:px-10">
+            <div className="flex items-center justify-center mb-4 space-x-3">
+              {/* <WrenchIcon className="w-10 h-10 text-indigo-100 animate-pulse" /> */}
+              <h1 className="text-2xl font-bold text-white sm:text-3xl">
+                Site Maintenance
+              </h1>
+            </div>
+          </div>
+
+          {/* Content Section */}
+          <div className="px-6 py-8 sm:p-10">
+            <div className="space-y-6 text-center">
+              {/* Main Message */}
+              <p className="text-lg leading-relaxed text-gray-700 sm:text-xl">
+                We are currently undergoing essential maintenance to elevate
+                your browsing experience.
+              </p>
+
+              {/* Details */}
+              <div className="space-y-4 text-gray-600">
+                <p className="leading-relaxed">
+                  Our team is working diligently to implement improvements that
+                  will bring you an even more seamless and enjoyable interaction
+                  with our site.
+                </p>
+                <p className="leading-relaxed">
+                  During this period, you may experience temporary
+                  inconveniences.
+                </p>
+              </div>
+
+              {/* Thank You Message */}
+              <div className="pt-6 space-y-2">
+                <p className="font-medium text-red-600">
+                  We appreciate your patience and understanding.
+                </p>
+                <p className="text-gray-500">
+                  Thank you for being a part of our community, and we look
+                  forward to unveiling the enhanced features and content soon.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <></>
+      </div>
+    );
+  }
+
   if (!isLoading && !products?.length) {
     return (
-      <div className="w-full min-h-full px-4 pt-6 pb-8 lg:p-8">
-        <p>{maintenanceDesc}</p>
+      <div className="flex justify-center w-full min-h-full px-4 pt-6 pb-8 lg:p-8">
+        {/* // <p>{maintenanceDesc}</p> */}
         {/* <NotFound text="text-not-found" className="w-7/12 mx-auto" /> */}
+        <MaintenanceComp />
       </div>
     );
   }
