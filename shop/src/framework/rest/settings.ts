@@ -1,16 +1,16 @@
-import type { Settings } from '@/types';
-import { useMutation, useQuery } from 'react-query';
-import client from './client';
-import { API_ENDPOINTS } from './client/api-endpoints';
-import { useState } from 'react';
-import { FileWithPath } from 'react-dropzone';
-import { getPreviewImage } from '@/lib/get-preview-image';
-import { useAtom } from 'jotai';
-import { couponAtom } from '@/store/checkout';
-import { toast } from 'react-toastify';
-import { useTranslation } from 'next-i18next';
-import { useRouter } from 'next/router';
-import { setMaintenanceDetails } from './utils/maintenance-utils';
+import type { Settings } from "@/types";
+import { useMutation, useQuery } from "react-query";
+import client from "./client";
+import { API_ENDPOINTS } from "./client/api-endpoints";
+import { useState } from "react";
+import { FileWithPath } from "react-dropzone";
+import { getPreviewImage } from "@/lib/get-preview-image";
+import { useAtom } from "jotai";
+import { couponAtom } from "@/store/checkout";
+import { toast } from "react-toastify";
+import { useTranslation } from "next-i18next";
+import { useRouter } from "next/router";
+import { setMaintenanceDetails } from "./utils/maintenance-utils";
 
 export function useSettings() {
   const { locale } = useRouter();
