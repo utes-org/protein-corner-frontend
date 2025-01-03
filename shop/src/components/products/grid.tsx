@@ -1,20 +1,21 @@
-import { useTranslation } from 'next-i18next';
-import cn from 'classnames';
-import Button from '@/components/ui/button';
-import ProductLoader from '@/components/ui/loaders/product-loader';
-import NotFound from '@/components/ui/not-found';
-import rangeMap from '@/lib/range-map';
-import ProductCard from '@/components/products/cards/card';
-import ErrorMessage from '@/components/ui/error-message';
-import { useProducts } from '@/framework/product';
-import { PRODUCTS_PER_PAGE } from '@/framework/client/variables';
-import type { Product } from '@/types';
+import { useTranslation } from "next-i18next";
+import cn from "classnames";
+import Button from "@/components/ui/button";
+import ProductLoader from "@/components/ui/loaders/product-loader";
+import NotFound from "@/components/ui/not-found";
+import rangeMap from "@/lib/range-map";
+import ProductCard from "@/components/products/cards/card";
+import ErrorMessage from "@/components/ui/error-message";
+import { useProducts } from "@/framework/product";
+import { PRODUCTS_PER_PAGE } from "@/framework/client/variables";
+import type { Product } from "@/types";
+import { useSettings } from "@/framework/settings";
 
 interface Props {
   limit?: number;
   sortedBy?: string;
   orderBy?: string;
-  column?: 'five' | 'six' | 'auto';
+  column?: "five" | "six" | "auto";
   shopId?: string;
   gridClassName?: string;
   products: Product[] | undefined;
@@ -36,33 +37,37 @@ export function Grid({
   isLoadingMore,
   hasMore,
   limit = PRODUCTS_PER_PAGE,
-  column = 'auto',
+  column = "auto",
 }: Props) {
-  const { t } = useTranslation('common');
+  const { t } = useTranslation("common");
+  const { settings } = useSettings();
+  const maintenanceDesc: string = settings?.maintenance?.description;
+  console.log("settings", maintenanceDesc);
 
   if (error) return <ErrorMessage message={error.message} />;
 
   if (!isLoading && !products?.length) {
     return (
       <div className="w-full min-h-full px-4 pt-6 pb-8 lg:p-8">
-        <NotFound text="text-not-found" className="w-7/12 mx-auto" />
+        <p>{maintenanceDesc}</p>
+        {/* <NotFound text="text-not-found" className="w-7/12 mx-auto" /> */}
       </div>
     );
   }
 
   return (
-    <div className={cn('w-full', className)}>
+    <div className={cn("w-full", className)}>
       <div
         className={cn(
           {
-            'grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-3':
-              column === 'auto',
-            'grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-6 gap-y-10 lg:grid-cols-[repeat(auto-fill,minmax(200px,1fr))] xl:grid-cols-[repeat(auto-fill,minmax(220px,1fr))] xl:gap-8 xl:gap-y-11 2xl:grid-cols-5 3xl:grid-cols-[repeat(auto-fill,minmax(360px,1fr))]':
-              column === 'five',
-            'grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-4 md:gap-6 lg:grid-cols-[repeat(auto-fill,minmax(200px,1fr))] xl:grid-cols-[repeat(auto-fill,minmax(220px,1fr))] 2xl:grid-cols-5 3xl:grid-cols-[repeat(auto-fill,minmax(360px,1fr))]':
-              column === 'six',
+            "grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-3":
+              column === "auto",
+            "grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-6 gap-y-10 lg:grid-cols-[repeat(auto-fill,minmax(200px,1fr))] xl:grid-cols-[repeat(auto-fill,minmax(220px,1fr))] xl:gap-8 xl:gap-y-11 2xl:grid-cols-5 3xl:grid-cols-[repeat(auto-fill,minmax(360px,1fr))]":
+              column === "five",
+            "grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-4 md:gap-6 lg:grid-cols-[repeat(auto-fill,minmax(200px,1fr))] xl:grid-cols-[repeat(auto-fill,minmax(220px,1fr))] 2xl:grid-cols-5 3xl:grid-cols-[repeat(auto-fill,minmax(360px,1fr))]":
+              column === "six",
           },
-          gridClassName,
+          gridClassName
         )}
       >
         {isLoading && !products?.length
@@ -80,7 +85,7 @@ export function Grid({
             onClick={loadMore}
             className="text-sm font-semibold h-11 md:text-base"
           >
-            {t('text-load-more')}
+            {t("text-load-more")}
           </Button>
         </div>
       )}
@@ -91,13 +96,13 @@ interface ProductsGridProps {
   className?: string;
   gridClassName?: string;
   variables?: any;
-  column?: 'five' | 'auto';
+  column?: "five" | "auto";
 }
 export default function ProductsGrid({
   className,
   gridClassName,
   variables,
-  column = 'auto',
+  column = "auto",
 }: ProductsGridProps) {
   const { products, loadMore, isLoadingMore, isLoading, hasMore, error } =
     useProducts(variables);

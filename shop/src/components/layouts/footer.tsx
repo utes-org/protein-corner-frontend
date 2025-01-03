@@ -1,26 +1,26 @@
-import { useTranslation } from 'next-i18next';
-import { siteSettings } from '@/config/site';
-import Link from '@/components/ui/link';
-import Logo from '@/components/ui/logo';
-import SubscriptionWidget from '@/components/settings/subscribe-to-newsletter';
-import { useSettings } from '@/framework/settings';
-import { useRouter } from 'next/router';
-import { StripeIcon } from '@/components/icons/payment-gateways/stripe';
-import { PayPalIcon } from '@/components/icons/payment-gateways/paypal';
-import { MollieIcon } from '@/components/icons/payment-gateways/mollie';
-import { RazorPayIcon } from '@/components/icons/payment-gateways/razorpay';
-import { SSLComerz } from '@/components/icons/payment-gateways/sslcomerz';
-import { PayStack } from '@/components/icons/payment-gateways/paystack';
-import { IyzicoIcon } from '@/components/icons/payment-gateways/iyzico';
-import { XenditIcon } from '@/components/icons/payment-gateways/xendit';
-import { BkashIcon } from '@/components/icons/payment-gateways/bkash';
-import { PaymongoIcon } from '@/components/icons/payment-gateways/paymongo';
-import { FlutterwaveIcon } from '@/components/icons/payment-gateways/flutterwave';
-import { isEmpty } from 'lodash';
-import { SVGLoaderIcon } from '@/components/icons/svg-loader';
-import { Routes } from '@/config/routes';
-import { getIcon } from '@/lib/get-icon';
-import * as socialIcons from '@/components/icons/social';
+import { useTranslation } from "next-i18next";
+import { siteSettings } from "@/config/site";
+import Link from "@/components/ui/link";
+import Logo from "@/components/ui/logo";
+import SubscriptionWidget from "@/components/settings/subscribe-to-newsletter";
+import { useSettings } from "@/framework/settings";
+import { useRouter } from "next/router";
+import { StripeIcon } from "@/components/icons/payment-gateways/stripe";
+import { PayPalIcon } from "@/components/icons/payment-gateways/paypal";
+import { MollieIcon } from "@/components/icons/payment-gateways/mollie";
+import { RazorPayIcon } from "@/components/icons/payment-gateways/razorpay";
+import { SSLComerz } from "@/components/icons/payment-gateways/sslcomerz";
+import { PayStack } from "@/components/icons/payment-gateways/paystack";
+import { IyzicoIcon } from "@/components/icons/payment-gateways/iyzico";
+import { XenditIcon } from "@/components/icons/payment-gateways/xendit";
+import { BkashIcon } from "@/components/icons/payment-gateways/bkash";
+import { PaymongoIcon } from "@/components/icons/payment-gateways/paymongo";
+import { FlutterwaveIcon } from "@/components/icons/payment-gateways/flutterwave";
+import { isEmpty } from "lodash";
+import { SVGLoaderIcon } from "@/components/icons/svg-loader";
+import { Routes } from "@/config/routes";
+import { getIcon } from "@/lib/get-icon";
+import * as socialIcons from "@/components/icons/social";
 
 export const icon: any = {
   stripe: <StripeIcon />,
@@ -37,7 +37,7 @@ export const icon: any = {
 };
 
 const Footer = () => {
-  const { t } = useTranslation('common');
+  const { t } = useTranslation("common");
   const { locale } = useRouter();
   const { settings, isLoading: settingsLoading } = useSettings();
   const paymentGateway = settings?.paymentGateway,
@@ -55,7 +55,7 @@ const Footer = () => {
       {/* Top */}
       <div className="grid w-full grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-6 pt-16 md:grid-cols-3 lg:pt-24 lg:pb-16 xl:grid-cols-[repeat(auto-fill,minmax(220px,1fr))] xl:gap-8 2xl:grid-cols-5">
         <div className="flex flex-col">
-          <div className="mb-[2px] flex h-16 items-start">
+          <div className="mb-[2px] flex h-16 items-start mr-24">
             <Logo />
           </div>
 
@@ -65,38 +65,38 @@ const Footer = () => {
             <>
               {contactDetails?.location?.formattedAddress ? (
                 <Link
-                  href={`https://www.google.com/maps/place/${contactDetails?.location?.formattedAddress}`}
-                  className="text-sm not-italic mb-7 text-heading"
+                  href={`https://maps.app.goo.gl/6HLUfjTgcEPqnvnV7`}
+                  className="text-sm not-italic my-7 text-heading"
                 >
-                  {contactDetails?.location?.formattedAddress}
+                  {"House 02, Road 15, Sector 12, Uttara, Dhaka-1230"}
                 </Link>
               ) : (
-                ''
+                ""
               )}
               {contactDetails?.emailAddress ? (
                 <Link
                   className="mb-1 text-sm text-heading"
-                  href={`mailto:${contactDetails?.emailAddress}`}
+                  href={`mailto:${"proteincornerbd@gmail.com"}`}
                 >
-                  {contactDetails?.emailAddress}
+                  {"proteincornerbd@gmail.com"}
                 </Link>
               ) : (
-                ''
+                ""
               )}
               {contactDetails?.contact ? (
                 <Link
                   className="text-sm text-heading"
-                  href={`tel:${contactDetails?.contact}`}
+                  href={`tel:${"+880 1711625900"}`}
                 >
-                  {contactDetails?.contact}
+                  {"+880 1711625900"}
                 </Link>
               ) : (
-                ''
+                ""
               )}
             </>
           )}
 
-          <div>
+          {/* <div>
             {settingsLoading ? (
               <SVGLoaderIcon className="text-xl" />
             ) : (
@@ -114,17 +114,17 @@ const Footer = () => {
                         {getIcon({
                           iconList: socialIcons,
                           iconName: social?.icon,
-                          className: 'w-[20px] h-[20px]',
+                          className: "w-[20px] h-[20px]",
                         })}
                       </Link>
                     ) : (
-                      ''
+                      ""
                     );
-                  },
+                  }
                 )}
               </div>
             )}
-          </div>
+          </div> */}
         </div>
 
         {siteSettings?.footer?.menus?.map((menu, idx) => (
@@ -172,24 +172,11 @@ const Footer = () => {
           <SVGLoaderIcon className="text-xl" />
         ) : (
           <span className="order-2 text-sm shrink-0 text-heading lg:order-1">
-            ©{date.getFullYear()}{' '}
-            <Link
-              className="font-medium text-heading"
-              href={siteLink ?? Routes?.home}
-            >
-              {siteTitle}
+            ©{date.getFullYear()}{" "}
+            <Link className="font-medium text-heading" href={Routes?.home}>
+              {"Protein Corner"}.{" "}
             </Link>
-            . {copyrightText}{' '}
-            {externalText ? (
-              <Link
-                className="font-medium text-heading"
-                href={externalLink ?? Routes?.home}
-              >
-                {externalText}
-              </Link>
-            ) : (
-              ''
-            )}
+            {"All rights reserved."}
           </span>
         )}
 
@@ -221,12 +208,12 @@ const Footer = () => {
                     {icon[method?.name]}
                   </div>
                 ) : (
-                  ''
+                  ""
                 );
-              },
+              }
             )
           ) : (
-            ''
+            ""
           )}
         </div>
       </div>

@@ -13,7 +13,7 @@ const Logo: React.FC<React.AnchorHTMLAttributes<{}>> = ({
   }: any = useSettings();
   return (
     <Link href="/" className={cn("inline-flex", className)} {...props}>
-      <span className="relative h-[2.125rem] w-32 overflow-hidden md:w-[8.625rem]">
+      <span className="relative h-[4.125rem] w-32 overflow-hidden md:w-[8.625rem]">
         <Image
           src={logoPlaceholder}
           alt={siteTitle || "Protein Corner Logo"}

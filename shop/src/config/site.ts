@@ -137,14 +137,14 @@ export const siteSettings = {
       {
         title: "text-explore",
         links: [
-          {
-            name: "Shops",
-            href: Routes.shops,
-          },
-          {
-            name: "Authors",
-            href: Routes.authors,
-          },
+          // {
+          //   name: "Shops",
+          //   href: Routes.shops,
+          // },
+          // {
+          //   name: "Authors",
+          //   href: Routes.authors,
+          // },
           {
             name: "Flash Deals",
             href: Routes?.flashSale,
@@ -175,10 +175,10 @@ export const siteSettings = {
       {
         title: "text-our-information",
         links: [
-          {
-            name: "Manufacturers",
-            href: Routes?.manufacturers,
-          },
+          // {
+          //   name: "Manufacturers",
+          //   href: Routes?.manufacturers,
+          // },
           {
             name: "Privacy policies",
             href: Routes.privacy,
