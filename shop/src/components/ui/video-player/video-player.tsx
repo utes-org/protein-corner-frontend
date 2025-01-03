@@ -96,7 +96,7 @@ export function VideoPlayer({ url, thumbnail }: VideoPlayerProps) {
     >
       <div
         className={cn(
-          "w-full aspect-video group bg-transparent relative rounded-t-xl lg:rounded-none overflow-hidden",
+          "w-full lg:mt-6 xl:mt-6 group bg-transparent relative rounded-t-xl lg:rounded-none overflow-hidden",
           isFullscreen &&
             "!rounded-none h-full flex items-center justify-center"
         )}
