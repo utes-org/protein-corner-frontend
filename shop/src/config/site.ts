@@ -66,30 +66,30 @@ export const siteSettings = {
       href: Routes.orders,
       label: "profile-sidebar-orders",
     },
-    {
-      href: Routes.downloads,
-      label: "profile-sidebar-downloads",
-    },
+    // {
+    //   href: Routes.downloads,
+    //   label: "profile-sidebar-downloads",
+    // },
     {
       href: Routes.wishlists,
       label: "profile-sidebar-my-wishlist",
     },
-    {
-      href: Routes.questions,
-      label: "profile-sidebar-my-questions",
-    },
-    {
-      href: Routes.refunds,
-      label: "text-my-refunds",
-    },
-    {
-      href: Routes.reports,
-      label: "profile-sidebar-my-reports",
-    },
-    {
-      href: Routes.help,
-      label: "profile-sidebar-help",
-    },
+    // {
+    //   href: Routes.questions,
+    //   label: "profile-sidebar-my-questions",
+    // },
+    // {
+    //   href: Routes.refunds,
+    //   label: "text-my-refunds",
+    // },
+    // {
+    //   href: Routes.reports,
+    //   label: "profile-sidebar-my-reports",
+    // },
+    // {
+    //   href: Routes.help,
+    //   label: "profile-sidebar-help",
+    // },
     {
       href: Routes.logout,
       label: "profile-sidebar-logout",
