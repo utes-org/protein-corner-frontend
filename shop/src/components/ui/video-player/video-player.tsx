@@ -115,6 +115,7 @@ export function VideoPlayer({ url, thumbnail }: VideoPlayerProps) {
           volume={volume}
           onProgress={handleOnProgress}
           onBufferEnd={() => setSeeking(false)}
+          loop={true}
           onEnded={handleOnEnded}
           onStart={() => setThumbnailVisibility(false)}
           onPlay={() => setThumbnailVisibility(false)}
@@ -140,15 +141,15 @@ export function VideoPlayer({ url, thumbnail }: VideoPlayerProps) {
       {isFullscreen && (
         <span className="absolute peer z-10 bottom-0 left-0 w-full h-[100px]" />
       )}
-      <div
+      {/* <div
         className={cn(
           "rounded-b-xl lg:absolute z-20 -bottom-full duration-500 left-0 right-0 w-full bg-[#1F2937] text-white sm:px-5 px-3 2xl:px-6 pt-2.5 2xl:pt-4 pb-2.5 sm:pb-3.5 2xl:pb-5 hover:bottom-0",
           isFullscreen
             ? "peer-hover:bottom-0 rounded-b-none"
             : "group-hover:bottom-0"
         )}
-      >
-        <VideoPlayerControl
+      > */}
+      {/* <VideoPlayerControl
           videoSliderProgress={videoSliderProgress}
           playing={playing}
           handleVideoProgressChange={handleVideoProgressChange}
@@ -160,8 +161,8 @@ export function VideoPlayer({ url, thumbnail }: VideoPlayerProps) {
           handleFullScreen={handleFullScreen}
           videoDuration={videoDuration}
           isFullscreen={isFullscreen}
-        />
-      </div>
+        /> */}
+      {/* </div> */}
     </div>
   );
 }
