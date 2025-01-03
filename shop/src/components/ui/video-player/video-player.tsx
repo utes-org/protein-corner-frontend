@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import ReactVideoPlayer from "react-player";
 import { OnProgressProps } from "react-player/base";
@@ -31,11 +31,15 @@ export function VideoPlayer({ url, thumbnail }: VideoPlayerProps) {
   const videoPlayerWrapperRef = useRef(null);
   const [thumbnailVisibility, setThumbnailVisibility] = useState(true);
   const [videoDuration, setVideoDuration] = useState<number>(0);
-  const [playing, setPlaying] = useState<boolean>(false);
+  const [playing, setPlaying] = useState<boolean>(true);
   const [videoSliderProgress, setVideoSliderProgress] = useState<number>(0);
   const [seeking, setSeeking] = useState<boolean>(false);
   const [volume, setVolume] = useState<number>(0.5);
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
+
+  useEffect(() => {
+    setPlaying(true); // Ensure playing is set to true on mount
+  }, []);
 
   const playPauseHandler = () => {
     setPlaying((prev) => !prev);
@@ -101,7 +105,7 @@ export function VideoPlayer({ url, thumbnail }: VideoPlayerProps) {
           ref={videoPlayerRef}
           url={url}
           controls={false}
-          light={true}
+          light={false}
           width="100%"
           height="100%"
           playIcon={<PlayButton />}
