@@ -6,7 +6,7 @@ interface SeoProps extends NextSeoProps {
 const Seo = ({ title, description, images, url, ...props }: SeoProps) => {
   return (
     <NextSeo
-      title={title}
+      title={"Protein Corner"}
       openGraph={{
         ...(Boolean(url) && {
           url: `${process.env.NEXT_PUBLIC_SITE_URL}/${url}`,
@@ -15,8 +15,8 @@ const Seo = ({ title, description, images, url, ...props }: SeoProps) => {
         description,
         ...(Boolean(images) && {
           images: images?.map((item) => ({
-            url: item?.image?.original,
-            alt: item?.title,
+            url: "https://res.cloudinary.com/dz1dlvfef/image/upload/v1736000531/ut6ipkxvl5afcshruvyt.png",
+            alt: "protein_corner_uttara",
           })),
         }),
       }}
