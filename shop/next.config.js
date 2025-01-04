@@ -15,6 +15,7 @@ module.exports = {
     domains: [
       "pickbazarlaravel.s3.ap-southeast-1.amazonaws.com",
       "pixarlaravel.s3.ap-southeast-1.amazonaws.com",
+      "res.cloudinary.com",
       "lh3.googleusercontent.com",
       "localhost",
       "127.0.0.1",

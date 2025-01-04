@@ -1,27 +1,27 @@
-import MaintenanceMode from '@/components/maintenance';
-import ErrorMessage from '@/components/ui/error-message';
-import Spinner from '@/components/ui/loaders/spinner/spinner';
-import { useModalAction } from '@/components/ui/modal/modal.context';
-import { useSettings } from '@/framework/settings';
+import MaintenanceMode from "@/components/maintenance";
+import ErrorMessage from "@/components/ui/error-message";
+import Spinner from "@/components/ui/loaders/spinner/spinner";
+import { useModalAction } from "@/components/ui/modal/modal.context";
+import { useSettings } from "@/framework/settings";
 import {
   adminOnly,
   getAuthCredentials,
   hasAccess,
-} from '@/framework/utils/auth-utils';
+} from "@/framework/utils/auth-utils";
 import {
   NEWSLETTER_POPUP_MODAL_KEY,
   REVIEW_POPUP_MODAL_KEY,
   checkIsMaintenanceModeComing,
   checkIsMaintenanceModeStart,
-} from '@/lib/constants';
-import { eachMinuteOfInterval, isBefore } from 'date-fns';
-import { useAtom } from 'jotai';
-import Cookies from 'js-cookie';
-import { useCallback, useEffect, useMemo } from 'react';
-import { useUser } from '@/framework/user';
-import { isEmpty } from 'lodash';
-import CountdownTimer from '@/components/ui/countdown-timer/maintenance';
-import { useRouter } from 'next/router';
+} from "@/lib/constants";
+import { eachMinuteOfInterval, isBefore } from "date-fns";
+import { useAtom } from "jotai";
+import Cookies from "js-cookie";
+import { useCallback, useEffect, useMemo } from "react";
+import { useUser } from "@/framework/user";
+import { isEmpty } from "lodash";
+import CountdownTimer from "@/components/ui/countdown-timer/maintenance";
+import { useRouter } from "next/router";
 
 type MaintenanceProps = {
   children: React.ReactNode;
@@ -36,10 +36,10 @@ export const isInArray = (array: Date[], value: Date) => {
 const Maintenance = ({ children }: MaintenanceProps) => {
   const { settings, isLoading: settingLoading, error } = useSettings();
   const [_, setUnderMaintenanceIsComing] = useAtom(
-    checkIsMaintenanceModeComing,
+    checkIsMaintenanceModeComing
   );
   const [underMaintenanceStart, setUnderMaintenanceStart] = useAtom(
-    checkIsMaintenanceModeStart,
+    checkIsMaintenanceModeStart
   );
 
   const { permissions } = getAuthCredentials();
@@ -73,14 +73,14 @@ const Maintenance = ({ children }: MaintenanceProps) => {
     if (dateInterVal.length > 0) {
       const beforeDay = isBefore(
         new Date(),
-        new Date(settings?.maintenance?.start as string),
+        new Date(settings?.maintenance?.start as string)
       );
       // Calculate maintenance start time
       const maintenanceStartTime = new Date(
-        settings?.maintenance?.start as string,
+        settings?.maintenance?.start as string
       );
       const maintenanceEndTime = new Date(
-        settings?.maintenance?.until as string,
+        settings?.maintenance?.until as string
       );
       maintenanceStartTime.setMinutes(maintenanceStartTime.getMinutes());
       // Check if the current time has passed the maintenance start time
@@ -118,11 +118,11 @@ const Maintenance = ({ children }: MaintenanceProps) => {
     ) {
       let timer = setTimeout(
         () =>
-          openModal('PROMO_POPUP_MODAL', {
+          openModal("PROMO_POPUP_MODAL", {
             isLoading: settingLoading,
             popupData: settings?.promoPopup,
           }),
-        Number(settings?.promoPopup?.popUpDelay),
+        Number(settings?.promoPopup?.popUpDelay)
       );
       return () => clearTimeout(timer);
     }
@@ -153,7 +153,7 @@ const Maintenance = ({ children }: MaintenanceProps) => {
       Boolean(seenPopup)
     ) {
       let timer = setTimeout(() => {
-        openModal('REVIEW_POPUP_MODAL', {
+        openModal("REVIEW_POPUP_MODAL", {
           tracking_number: me?.last_order?.tracking_number,
         });
       }, Number(5000));
@@ -182,21 +182,22 @@ const Maintenance = ({ children }: MaintenanceProps) => {
   if (underMaintenanceStart && !AccessAdminRoles) {
     return (
       <main
-        className={`${settings?.siteTitle}-version-${process?.env?.NEXT_PUBLIC_VERSION}`}
+        // ${settings?.siteTitle}-version-${process?.env?.NEXT_PUBLIC_VERSION}
+        className={`protein-corner`}
       >
         <MaintenanceMode
           data={{
-            aboutUsTitle: settings?.maintenance?.aboutUsTitle ?? '',
-            aboutUsDescription: settings?.maintenance?.aboutUsDescription ?? '',
-            contactUsTitle: settings?.maintenance?.contactUsTitle ?? '',
+            aboutUsTitle: settings?.maintenance?.aboutUsTitle ?? "",
+            aboutUsDescription: settings?.maintenance?.aboutUsDescription ?? "",
+            contactUsTitle: settings?.maintenance?.contactUsTitle ?? "",
             contactDetails: settings?.contactDetails ?? [],
-            title: settings?.maintenance?.title ?? '',
-            description: settings?.maintenance?.description ?? '',
-            buttonTitleOne: settings?.maintenance?.buttonTitleOne ?? '',
-            buttonTitleTwo: settings?.maintenance?.buttonTitleTwo ?? '',
+            title: settings?.maintenance?.title ?? "",
+            description: settings?.maintenance?.description ?? "",
+            buttonTitleOne: settings?.maintenance?.buttonTitleOne ?? "",
+            buttonTitleTwo: settings?.maintenance?.buttonTitleTwo ?? "",
             image: settings?.maintenance?.image as any,
             isOverlayColor: settings?.maintenance?.isOverlayColor as any,
-            overlayColorRange: settings?.maintenance?.overlayColorRange ?? '',
+            overlayColorRange: settings?.maintenance?.overlayColorRange ?? "",
           }}
           renderCountDown={
             <div className="mt-7 lg:mt-14">
@@ -205,7 +206,7 @@ const Maintenance = ({ children }: MaintenanceProps) => {
                   new Date(
                     settings?.maintenance?.start
                       ? (settings?.maintenance?.until as string)
-                      : (settings?.maintenance?.start as string),
+                      : (settings?.maintenance?.start as string)
                   )
                 }
                 onComplete={() => reload()}
@@ -216,13 +217,7 @@ const Maintenance = ({ children }: MaintenanceProps) => {
       </main>
     );
   }
-  return (
-    <main
-      className={`${settings?.siteTitle}-version-${process?.env?.NEXT_PUBLIC_VERSION}`}
-    >
-      {children}
-    </main>
-  );
+  return <main className={`protein-corner`}>{children}</main>;
 };
 
 export default Maintenance;

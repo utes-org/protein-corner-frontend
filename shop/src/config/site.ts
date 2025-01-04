@@ -37,9 +37,9 @@ export const siteSettings = {
     { href: Routes.orders, label: "auth-menu-my-orders" },
     { href: Routes.cards, label: "profile-sidebar-my-cards" },
     { href: Routes.wishlists, label: "profile-sidebar-my-wishlist" },
-    { href: Routes.questions, label: "profile-sidebar-my-questions" },
-    { href: Routes.refunds, label: "text-my-refunds" },
-    { href: Routes.reports, label: "profile-sidebar-my-reports" },
+    // { href: Routes.questions, label: "profile-sidebar-my-questions" },
+    // { href: Routes.refunds, label: "text-my-refunds" },
+    // { href: Routes.reports, label: "profile-sidebar-my-reports" },
     { href: Routes.checkout, label: "auth-menu-checkout" },
     { href: Routes.changePassword, label: "profile-sidebar-password" },
   ],
@@ -108,7 +108,7 @@ export const siteSettings = {
   },
   headerLinks: [
     // { href: Routes.shops, icon: null, label: "nav-menu-shops" },
-    { href: Routes.coupons, icon: null, label: "nav-menu-offer" },
+    { href: Routes.events, icon: null, label: "nav-menu-event" },
     { href: Routes.contactUs, label: "nav-menu-contact" },
     // {
     //   href: Routes.becomeSeller,
