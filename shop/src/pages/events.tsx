@@ -31,8 +31,8 @@ const EventsPage: NextPageWithLayout = () => {
           "https://res.cloudinary.com/dz1dlvfef/image/upload/v1736000531/ut6ipkxvl5afcshruvyt.png"
         }
         alt={"protein_corner_uttara"}
-        width={720}
-        height={250}
+        width={1920}
+        height={350}
         objectFit="cover"
         className="overflow-x-hidden"
       />
