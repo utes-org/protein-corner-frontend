@@ -16,7 +16,7 @@ const Logo: React.FC<React.AnchorHTMLAttributes<{}>> = ({
       <span className="relative h-[4.125rem] w-32 overflow-hidden md:w-[8.625rem]">
         <Image
           src={logoPlaceholder}
-          alt={siteTitle || "Protein Corner Logo"}
+          alt={"Protein Corner Logo"}
           fill
           sizes="(max-width: 768px) 100vw"
           loading="eager"
