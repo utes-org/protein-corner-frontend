@@ -2,7 +2,7 @@ import LocationBasedShopForm from "@/components/form/location-based-shop-form";
 import { CloseIcon } from "@/components/icons/close-icon";
 import { MapPin } from "@/components/icons/map-pin";
 import { SearchIcon } from "@/components/icons/search-icon";
-// import GroupsDropdownMenu from "@/components/layouts/menu/groups-menu";
+import GroupsDropdownMenu from "@/components/layouts/menu/groups-menu";
 import StaticMenu from "@/components/layouts/menu/static-menu";
 import Alert from "@/components/ui/alert";
 import Button from "@/components/ui/button";
