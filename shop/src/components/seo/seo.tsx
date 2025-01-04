@@ -1,4 +1,4 @@
-import { NextSeo, NextSeoProps } from 'next-seo';
+import { NextSeo, NextSeoProps } from "next-seo";
 interface SeoProps extends NextSeoProps {
   url?: string;
   images?: any[] | null;
